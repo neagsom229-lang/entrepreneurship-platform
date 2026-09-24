@@ -40,29 +40,39 @@ Briefly define the context of this entrepreneurship framework.
 - Step 2: Formulate qualitative experiments
 `);
   const [activeTab, setActiveTab] = useState<'write' | 'preview'>('write');
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (!title.trim() || !content.trim()) return;
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!title.trim() || !content.trim()) return;
+  const tags = tagsInput
+    .split(',')
+    .map((t) => t.trim())
+    .filter(Boolean);
 
-    const tags = tagsInput
-      .split(',')
-      .map((t) => t.trim())
-      .filter(Boolean);
+  // Compute word count from the markdown content body
+  const wordCount = content.trim().split(/\s+/).filter(Boolean).length;
+  const computedReadTime = Math.max(1, Math.ceil(wordCount / 200));
 
-    addDocument({
-      title,
-      slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-      summary,
-      content,
-      category,
-      difficulty,
-      readTime: Number(readTime) || 5,
-      tags,
-    });
+  addDocument({
+    title,
+    slug: title.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+    summary,
+    content,
+    category,
+    difficulty,
+    readTime: computedReadTime,
+    tags,
+    wordCount,
+    author: {
+      name: 'Self-Directed',
+      role: 'Founder',
+    },
+    prerequisites: 'None.',
+    learningObjectives: [],
+  });
 
-    router.push('/documents');
-  };
+  router.push('/documents');
+};
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
