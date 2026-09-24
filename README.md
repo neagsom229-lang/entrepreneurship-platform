@@ -1,6 +1,6 @@
 # LessonHub — Entrepreneurship Platform
 
-> A production-grade Next.js platform for storing, reading, and annotating entrepreneurship frameworks — built for founders, students, and operators who want systematic venture knowledge instead of generic startup advice.
+> A Entrepreneurship platform as i have take info from my book i have learn and also research for storing, reading, and annotating entrepreneurship frameworks — built for students, and operators who want systematic venture knowledge instead of generic startup advice.
 
 🔗 **Live:** https://entrepreneurship-platform.vercel.app
 
