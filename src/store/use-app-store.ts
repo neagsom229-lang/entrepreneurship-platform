@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { DocumentItem, Note, ReadingProgressRecord, Category, Difficulty } from '@/types';
+import { DocumentItem, Note, ReadingProgressRecord } from '@/types';
 import { INITIAL_DOCUMENTS } from '@/lib/mock-data';
 
 interface AppState {
