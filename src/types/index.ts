@@ -15,30 +15,28 @@ export type Category =
 
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced';
 
-export interface LearningObjective {
-  id: string;
-  objective: string;
+export interface Author {
+  name: string;
+  role: string;
+  avatar?: string;
 }
 
 export interface DocumentItem {
   id: string;
   title: string;
   slug: string;
-  category: Category;
-  difficulty: Difficulty;
-  readTime: number; // Computed at ~200 WPM
-  wordCount: number;
-  tags: string[];
-  author: {
-    name: string;
-    role: string;
-    avatar?: string;
-  };
-  updatedAt: string;
   summary: string;
+  content: string;
+  category: Category;
+  tags: string[];
+  difficulty: Difficulty;
+  readTime: number;      // Math.ceil(wordCount / 200)
+  wordCount: number;
+  author: Author;
   prerequisites: string;
   learningObjectives: string[];
-  content: string; // Structured Markdown
+  createdAt: string;     // ← THE FIX
+  updatedAt: string;
 }
 
 export interface Note {
